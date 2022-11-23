@@ -8,9 +8,38 @@
     <link rel="stylesheet" href="./styles/apple_watch_responsive_1.2.css">
     <script src="./js/main.js" defer></script>
     <link rel="shortcut icon" href="./production/svg/Skull.svg" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/5b301baa54.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
-    <div class="container"></div>
+    <div class="trail_container">
+        <!-- <div class="dot_trail"></div> -->
+    </div>
+    <div class="container">
+        <div class="settings_menu" data-setting-type="place_speed">
+            <i class="setting_btn fa-solid fa-angle-up"></i>
+            <i class="setting_btn fa-solid fa-angle-down"></i>
+            speed
+            <div class="setting_label_wrapper">
+                <input class="setting_label" id="effect_setting"></input>
+            </div>
+        </div>
+        <div class="settings_menu" data-setting-type="fade_time">
+            <i class="setting_btn fa-solid fa-angle-up"></i>
+            <i class="setting_btn fa-solid fa-angle-down"></i>
+            fade time
+            <div class="setting_label_wrapper">
+                <input class="setting_label" id="effect_setting"></input>
+            </div>
+        </div>
+        <div class="settings_menu" data-setting-type="dot_size">
+            <i class="setting_btn fa-solid fa-angle-up"></i>
+            <i class="setting_btn fa-solid fa-angle-down"></i>
+            dot size
+            <div class="setting_label_wrapper">
+                <input class="setting_label" id="effect_setting"></input>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
