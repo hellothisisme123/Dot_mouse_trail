@@ -19,7 +19,7 @@ settings.forEach(setting => {
                 clearInterval(place_trail)
                 place_trail = setInterval(create_dot, effect_stats.place_speed)
             }
-            e.target.value = eval(`effect_stats.${data_attribute}`)
+            e.target.value = eval(`effect_stats.${data_attribute}`) //sets the input value
         }
     })
 
@@ -33,7 +33,7 @@ settings.forEach(setting => {
             clearInterval(place_trail)
             place_trail = setInterval(create_dot, effect_stats.place_speed)
         }
-        input.value = eval(`effect_stats.${data_attribute}`)
+        input.value = eval(`effect_stats.${data_attribute}`)    //sets the input value
     })
 
     let down_arrow = setting.childNodes[3]
@@ -47,13 +47,13 @@ settings.forEach(setting => {
             place_trail = setInterval(create_dot, effect_stats.place_speed)
             
         }
-        input.value = eval(`effect_stats.${data_attribute}`)
+        input.value = eval(`effect_stats.${data_attribute}`)    //sets the input value
     })
 
-    input.value = eval(`effect_stats.${setting.getAttribute('data-setting-type')}`)
+    input.value = eval(`effect_stats.${setting.getAttribute('data-setting-type')}`) //sets the input value on page load
 })
 
-let mouseTrail = {
+let mouseTrail = { //make it one variable rather than 4
     'layerX': '0',
     'layerY': '0',
     'container_width': undefined,
@@ -61,30 +61,27 @@ let mouseTrail = {
 }  
 
 trail_container.addEventListener('mousemove', (e) => {
-    mouseTrail.layerX = e.layerX
-    mouseTrail.layerY = e.layerY
-    mouseTrail.container_width = trail_container.clientWidth
-    mouseTrail.container_height = trail_container.clientHeight
+    mouseTrail.layerX = e.layerX    //sets x pos
+    mouseTrail.layerY = e.layerY    //sets y pos
+    mouseTrail.container_width = trail_container.clientWidth    //with of trail container
+    mouseTrail.container_height = trail_container.clientHeight  //height of trail container
 });
 
-const create_dot = () => {
+const create_dot = () => {  //creates a dot at mouse pos
     let dot = document.createElement('div')
-    dot.style.left = `${mouseTrail.layerX / mouseTrail.container_width * 100}%`
-    dot.style.top = `${mouseTrail.layerY / mouseTrail.container_height * 100}%`
-    dot.style.width = `${effect_stats.dot_size}rem`
-    dot.classList.add('dot_trail')
-    dot.style.animation = `dot_shadow_fade ${effect_stats.fade_time}ms alternate forwards linear infinite`
+    dot.style.left = `${mouseTrail.layerX / mouseTrail.container_width * 100}%` //x pos
+    dot.style.top = `${mouseTrail.layerY / mouseTrail.container_height * 100}%` //y pos
+    dot.style.width = `${effect_stats.dot_size}rem` //width according to settings
+    dot.classList.add('dot_trail')  //default styling
+    dot.style.animation = `dot_shadow_fade ${effect_stats.fade_time}ms alternate forwards linear infinite`  //animation according to settings
     trail_container.appendChild(dot)
-    setTimeout(() => {
-        dot.remove()
+    setTimeout(() => {  //removes the dot after time according to settings
+        dot.remove()    
     }, effect_stats.fade_time);
 }
 
-let place_trail
+let place_trail //initialized variable globally
 window.onload = () => {
-    if (!trail_container) return
-    place_trail = setInterval(create_dot, effect_stats.place_speed);
-    window.addEventListener('click', (e) => {
-        
-    })
+    if (!trail_container) return    //only if trail_container exists 
+    place_trail = setInterval(create_dot, effect_stats.place_speed);    //default timeout according to settings
 }
